@@ -45,7 +45,16 @@ public class MainActivity extends AppCompatActivity {
             //  We have received the result successfully
             if (data != null && data.hasExtra("Test Intent"))
             {
-                txtOutput.setText("Received Result from StartActivity: " + data.getStringExtra("Test Intent"));
+                String output = "";
+                if (data.hasExtra("Test Intent"))
+                    output += "String: " + data.getStringExtra("Test Intent");
+                if (data.hasExtra("Test Intent int"))
+                    output += ", Int: " + data.getIntExtra("Test Intent int", 0);
+                if (data.hasExtra("Test Intent bool"))
+                    output += ", Bool: " + data.getBooleanExtra("Test Intent bool", false);
+                if (data.hasExtra("Test Intent double"))
+                    output += ", Float: " + data.getDoubleExtra("Test Intent double", 0.0f);
+                txtOutput.setText("Received Result from StartActivity.  Content: " + output);
             }
             else
             {
